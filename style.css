@@ -78,3 +78,7 @@ p {
 .item {
   cursor: pointer;
 }
+
+#middle {
+  visibility: hidden;
+}
