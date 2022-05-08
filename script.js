@@ -1,57 +1,76 @@
 const rock = document.querySelector(".rock");
 const paper = document.querySelector(".paper");
 const scissors = document.querySelector(".scissors");
-const computerSelection = computerPlay();
-const playerSelection = playerPlay();
-
-document.querySelectorAll(".item").forEach(function(e) {
-    e.addEventListener('click', function() {
-        console.log(e.textContent.toLowerCase());
-    })
-})
-
-// rock.addEventListener("click", () => myFunc());
-
-// detect what the player selects
-function playerPlay(element) {
-    // console.log(element, computerSelection);
-    return element;
-    // console.log(element);
-}
+let playerSelection;
+let computerSelection;
+let roundCount = 0;
+let playerScore = 0;
+let computerScore = 0;
+const item = document.getElementsByTagName(".item");
+// console.log(roundCount, playerScore, computerScore)
+// const playerSelection = "rock";
 
 // generate random computer input
 function computerPlay() {
-    randomNum = Math.floor(Math.random() * 3);
-    // console.log(randomNum);
+    randomNum = Math.floor(Math.random() * 3);    
     switch(randomNum) {
         case 0: 
             return 'rock';
-            break;
         case 1:
-            return 'paper';
-            break;
+            return 'paper';            
         case 2: 
             return 'scissors';
     }
 }
 
-// when player clicks on an item, it triggers a function
-// this function should detect which of the items were clicked
-// it then compares what the player clicked to the randomly generated computerSelection
+// listen to what the player clicks
+document.querySelectorAll(".item").forEach(function(e) {
+    e.addEventListener('click', () => getPlayerSelection(e));
+})
 
+// triggers the comparison of playerSelection vs computerSelection
+function getPlayerSelection(e) {
+    playerSelection = event.target.id;
+    computerSelection = computerPlay();
+    console.log(playerSelection, computerSelection);
+    playRound(playerSelection, computerSelection);        
+}
 
+// compare playerSelection vs computerSelection and keeps track of score
 function playRound(playerSelection, computerSelection) {
-    // console.log(playerSelection, computerSelection);
-    // if playerSelection === computerSelection then tie
 
-    // if playerSelection === rock && computerSelection === scissors || playerSelection === scissors && computerSelection === paper then player gains 1 point
+        if (playerSelection === computerSelection ) {
+            console.log("tie!");
+            console.log("player score is " + playerScore, "computer score is " + computerScore);
+        }
 
-    // if playerSelection === scissors && computerSelection === rock || playerSelection === paper && computerSelection === scissors then computer gains 1 point
+        if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'scissors' && computerSelection === 'paper') || (playerSelection === 'paper' && computerSelection === 'rock')) {
+            console.log("Player wins this round`!");
+            playerScore++;
+            console.log("player score is " + playerScore, "computer score is " + computerScore);
+        }
+
+        if ((computerSelection === 'rock' && playerSelection === 'scissors') || (computerSelection === 'scissors' && playerSelection === 'paper') || (computerSelection === 'paper' && playerSelection === 'rock')) {
+            console.log("Computer wins this round!");            
+            computerScore++;
+            console.log("player score is " + playerScore, "computer score is " + computerScore);
+        }
+
+        roundCount++;
+        console.log(roundCount);
+
+        if (roundCount == 5) {
+            console.log("GAME OVER! " + " Final score is " + playerScore + " for the player and " + computerScore + " for the computer")
+            gameOver();
+        }
 
 }
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        playRound();
-    }    
+// reset everything for a new game
+function gameOver() {
+    alert("Game Over! Would you like to try again?");
+    roundCount = 0;
+    playerScore = 0;
+    computerScore = 0;  
+    
 }
