@@ -7,9 +7,6 @@ let roundCount = 0;
 let playerScore = 0;
 let computerScore = 0;
 const result = document.getElementById("result");
-const winner = document.getElementById("winner");
-const loser = document.getElementById("loser");
-const middle = document.getElementById("middle");
 
 // generate random computer input
 function computerPlay() {
@@ -40,9 +37,6 @@ function getPlayerSelection(e) {
 // compare playerSelection vs computerSelection and keeps track of score
 function playRound(playerSelection, computerSelection) {
         result.textContent = "";
-        winner.textContent = "";
-        loser.textContent = "";
-        middle.style.visibility = "hidden";
         if (playerSelection === computerSelection ) {
             console.log("tie!");
             console.log("player score is " + playerScore, "computer score is " + computerScore);
@@ -53,20 +47,14 @@ function playRound(playerSelection, computerSelection) {
             console.log("Player wins this round`!");
             playerScore++;
             console.log("player score is " + playerScore, "computer score is " + computerScore);
-            result.textContent = "You win!";
-            winner.textContent = playerSelection;
-            loser.textContent = computerSelection;
-            middle.style.visibility = "visible";
+            result.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
         }
 
         if ((computerSelection === 'rock' && playerSelection === 'scissors') || (computerSelection === 'scissors' && playerSelection === 'paper') || (computerSelection === 'paper' && playerSelection === 'rock')) {
             console.log("Computer wins this round!");            
             computerScore++;
             console.log("player score is " + playerScore, "computer score is " + computerScore);
-            result.textContent = "You lose!";
-            winner.textContent = computerSelection;
-            loser.textContent = playerSelection;
-            middle.style.visibility = "visible";
+            result.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
         }
 
         roundCount++;
@@ -92,8 +80,5 @@ function gameOver() {
     roundCount = 0;
     playerScore = 0;
     computerScore = 0;  
-    result.textContent = "";
-    winner.textContent = "";
-    loser.textContent = "";
-    middle.style.visibility = "hidden";                                     
+    result.textContent = "";                                
 }
