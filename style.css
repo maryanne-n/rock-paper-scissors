@@ -13,15 +13,23 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  background-color: #2f2699;
+  background-image: url("images/bg.png");
+  background-size: cover;
+}
+
 h1, h2, h3, h4, h5, h6, p, ol, ul, form {
   margin: 0 auto;
   padding: 0;
   font-weight: normal;
+  color: white;
 }
 
 p {
   font-size: 18px;
   font-weight: 400;
+  color: white;
 }
 
 ol, ul {
@@ -74,7 +82,7 @@ p {
   padding: 20px;
 }
 
-.user-section {
+.section {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,7 +90,7 @@ p {
   padding: 20px;
 }
 
-.user-tools {
+.tools {
   display: flex;
   gap: 10px;
 }
