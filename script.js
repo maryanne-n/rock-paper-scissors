@@ -68,7 +68,6 @@ function playRound(playerSelection, computerSelection) {
     }
 
     roundCount++;
-    console.log(roundCount);
 
     if (roundCount == 5) {
         // Grey out the user playboard temporarily to signify game is inactive
