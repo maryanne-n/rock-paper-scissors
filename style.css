@@ -41,6 +41,12 @@ img {
   height: auto;
 }
 
+.inactive {
+  pointer-events: none;
+  opacity: 0.2;
+  transition: all 1s ease-in-out;
+  /* cursor: default; */
+}
 
 /* =============================================== */
 /* Main styles =================================== */
@@ -56,8 +62,8 @@ h1 {
 h2 {
     text-align: center;
     font-size: 28px;
-    font-weight: 600px;
-    padding: 20px;
+    font-weight: 600;
+    padding-bottom: 10px;
 }
 
 h3 {
@@ -75,18 +81,7 @@ p {
     margin: 0 auto;
 }
 
-.scoreboard {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  padding: 20px;
-}
-
-.board {
-  display: flex;
-  flex-direction: column;
-  /* flex-basis: 1 1 0; */
-}
+/* Tools section =================================== */
 
 .tools {
   display: flex;
@@ -111,23 +106,64 @@ p {
 
 .item {
   transition: all .2s ease-in-out;
+  cursor: pointer;
+  width: 200px;
 }
 
 .item:hover {
   transform: scale(1.1);
 }
 
-.item, .item-c {
-  cursor: pointer; 
-  width: 200px;
+/* Scoring section =================================== */
+
+#result {
+  height: 40px;
+  margin: 40px auto;
 }
 
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+}
 
-.pointer {
-  pointer-events: none;
+.board, .choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score {
+  padding-bottom: 10px;
 }
 
 .entry {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
+}
+
+button {
+  background-color: white; /* Green */
+  border-radius: 4px;
+  border: none;
+  color: navy;
+  padding: 15px 32px;
+  margin: 20px auto;
+  text-align: center;
+  text-decoration: none;
+  display: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.4s ease-out;
+}
+
+button:hover {
+  /* background-color: navy;
+  border-radius: 4px;
+  color: white; */
+  transition: all 0.3s ease-in-out;
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }

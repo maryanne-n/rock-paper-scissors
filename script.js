@@ -1,6 +1,10 @@
 const rock = document.querySelector(".rock");
 const paper = document.querySelector(".paper");
 const scissors = document.querySelector(".scissors");
+const tools = document.querySelector(".user-tools")
+
+const tryBtn = document.getElementById("try-btn");
+tryBtn.style.display = "none";
 let playerSelection;
 let computerSelection;
 let roundCount = 0;
@@ -9,7 +13,8 @@ let roundCount = 0;
 let playerScore = 0;
 let computerScore = 0;
 
-const result = document.getElementById("result");
+// const result = document.getElementById("result");
+const result = document.querySelector(".result");
 
 // generate random computer input
 function computerPlay() {
@@ -78,8 +83,7 @@ function playRound(playerSelection, computerSelection) {
 
         if (roundCount == 5) {
             console.log("GAME OVER! " + " Final score is " + playerScore + " for the player and " + computerScore + " for the computer")
-            // gameOver();
-            const timeout = setTimeout(gameOver, 1000)
+            gameOver();
         }
 
 }
@@ -87,13 +91,31 @@ function playRound(playerSelection, computerSelection) {
 // reset everything for a new game
 function gameOver() {
     if (computerScore == playerScore) {
-        alert("Final score is " + playerScore + " for the player and " + computerScore + " for the computer. It's a tie! Would you like to try again?");
+        result.textContent = "It's a tie! Final score is " + playerScore + " for the player and " + computerScore + " for the computer. Would you like to try again?";
     } else if (computerScore > playerScore) {
-        alert("Final score is " + playerScore + " for the player and " + computerScore + " for the computer. You lost! Would you like to try again?");
+        result.textContent = "You lost! Final score is " + playerScore + " for the player and " + computerScore + " for the computer. Would you like to try again?";
     } else if (playerScore > computerScore) {
-        alert("Final score is " + playerScore + " for the player and " + computerScore + " for the computer. You won! Would you like to try again?");
+        result.textContent = "You won! Final score is " + playerScore + " for the player and " + computerScore + " for the computer. Would you like to try again?";
     }
-    // alert("Game Over! Would you like to try again?");
+    // Remove pointer events temporarily
+    // tools.style.pointerEvents = "none";
+    tools.classList.add("inactive");
+    // Clear the scoreboard selections
+    document.querySelector(".choice-p").style.display = "none";
+    document.querySelector(".choice-c").style.display = "none";
+    // Reveal the try again button
+    tryBtn.style.display = "block";                                
+}
+
+function reStart() {
+    // Restore pointer events
+    // tools.style.pointerEvents = "auto";
+    tools.classList.remove("inactive");
+    // Hide the try again button
+    tryBtn.style.display = "none";
+    // Restore the scoreboard selections
+    document.querySelector(".choice-p").style.display = "flex";
+    document.querySelector(".choice-c").style.display = "flex";
     roundCount = 0;
     playerScore = 0;
     computerScore = 0;  
@@ -101,5 +123,5 @@ function gameOver() {
     document.querySelector(".computer-score").textContent = 0;
     document.getElementById('player-img').src = "";
     document.getElementById('computer-img').src = "";
-    result.textContent = "";                                
+    result.textContent = "";    
 }

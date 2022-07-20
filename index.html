@@ -16,35 +16,41 @@
         <h2>Let's play a game.</h2>
         <p>Can you win Rock Paper Scissors in 5 rounds?</p>
     </div>
-    <div class="scoreboard">
-        <div id="board" class="board">
-            <h3>Player: <span class="player-score">0</span></h3>
-            <div class="entry" id="player-entry">
-                <img id="player-img">
-            </div>
-        </div>
-        <div id="board" class="board">
-            <h3>Computer: <span class="computer-score">0</span></h3>
-            <div class="entry" id="computer-entry">
-                <img id="computer-img">
-            </div>
-        </div>
-    </div>
     <div class="tools">
         <div class="section">
             <h3 class="instructions">Choose your weapon!</h3>
             <div class="user-tools">
-                <img src="images/rock.png" id="rock" class="rock item">
-                <img src="images/paper.png" id="paper" class="paper item">
-                <img src="images/scissors.png" id="scissors" class="scissors item">    
+                <img src="images/rock.png" id="rock" class="rock item pointer">
+                <img src="images/paper.png" id="paper" class="paper item pointer">
+                <img src="images/scissors.png" id="scissors" class="scissors item pointer">    
             </div>
         </div>
     </div>
-    <div class="">
-        <p id="result"></p>
-        <p id="comment"></p>
-        <!-- <p id="comment"><span id="winner"></span> <span id="middle"> beats </span><span id="loser"></span></p> -->
+        <h2 id="result" class="result"></h2>
+        <button id="try-btn" onClick="reStart()">Try Again</button>
+    <div class="scoreboard">
+        <div id="board" class="board">
+            <h2>Player score: <h2 class="score player-score">0</h2></h2>
+            <div class="choice choice-p">
+                <h2>Player Chooses:</h2>            
+                <div class="entry" id="player-entry">
+                    <img id="player-img">
+                </div>
+            </div>
+            
+        </div>
+        <div id="board" class="board">
+            <h2>Computer Score:</h2><h2 class="score computer-score">0</h2>
+            <div class="choice choice-c">
+                <h2>Computer Chooses: </h2>                
+                <div class="entry" id="computer-entry">
+                    <img id="computer-img">
+                </div>
+            </div>
+            
+        </div>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
